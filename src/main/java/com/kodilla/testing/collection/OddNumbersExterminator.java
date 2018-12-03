@@ -12,12 +12,9 @@ class OddNumbersExterminator {
             int number = numbers.get(i);
             if (number % 2 == 0){
                 even.add(number);
-
             }
         }
-
         return even;
     }
-
-
 }
+

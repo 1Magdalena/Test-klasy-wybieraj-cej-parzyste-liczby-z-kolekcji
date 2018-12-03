@@ -1,22 +1,50 @@
 package com.kodilla.testing.collection;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
 import java.util.ArrayList;
 
-class CollectionTestSuite {
-    public void testOddNumbersExterminatorEmptyList() {
+public class CollectionTestSuite {
+    @Before
+    public OddNumbersExterminator exterminator = new OddNumbersExterminator();
+
+    @Test
+    public void testEmptyCollection() {
+
         //Given
         ArrayList<Integer> empty = new ArrayList <Integer>();
+
         //When
-        OddNumbersExterminator exterminate = new OddNumbersExterminator();
+        ArrayList<Integer> withoutOdd = exterminator.exterminate(empty);
 
-        ArrayList<Integer> withoutOdd = exterminate.exterminate(empty);
         //Then
-        if(withoutOdd.isEmpty()) {
-            System.out.println("Is empty");
-        } else{
-            System.out.println("Is not empty");
-            }
-
+        Assert.assertEquals(withoutOdd, new ArrayList<>());
     }
 
+    @Test
+    public void testNormalCollection() {
+        //Given
+        ArrayList<Integer> normal = new ArrayList <Integer>();
+        normal.add(3);
+        normal.add(1);
+        normal.add(2);
+        normal.add(6);
+        normal.add(0);
+        normal.add(1);
+        normal.add(-16);
+
+        //When
+        ArrayList<Integer> realOutput = exterminator.exterminate(normal);
+
+        ArrayList<Integer> expectedOutput = new ArrayList <Integer>();
+        expectedOutput.add(2);
+        expectedOutput.add(6);
+        expectedOutput.add(0);
+        expectedOutput.add(-16);
+
+        //Then
+        Assert.assertEquals(expectedOutput, realOutput);
+        }
 }
