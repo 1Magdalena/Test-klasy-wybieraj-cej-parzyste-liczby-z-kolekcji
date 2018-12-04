@@ -1,13 +1,11 @@
 package com.kodilla.testing.collection;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Test;
 import java.util.ArrayList;
 
 public class CollectionTestSuite {
-    @Before
+
     public OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
     @Test
